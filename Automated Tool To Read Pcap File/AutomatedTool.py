@@ -15,7 +15,7 @@ class MyWidget(QtGui.QMainWindow):
 		
 		self.ui = uic.loadUi('AutoTool.ui',self)	# for loading the application UI
 		self.ui.setWindowTitle("Automated Tool")	# setting TITLE for UI
-		self.ui.show()								# showing UI
+		self.ui.show()					# showing UI
 
 		''' button click events call'''
 		self.BtnList.clicked.connect(self.ListOfFile)	
@@ -25,14 +25,14 @@ class MyWidget(QtGui.QMainWindow):
 
 	# defination for list of file
 	def ListOfFile(self):
-		EnteredPcapName = self.ui.LineEditFname.toPlainText()					# accepting input from LineEdit
+		EnteredPcapName = self.ui.LineEditFname.toPlainText()			# accepting input from LineEdit
 		
 		my_file = Path(str(EnteredPcapName))
 		if not my_file.is_file():
 			self.ui.textBrowser.setText("Enter valid path ")
 			return 0
     
-		if EnteredPcapName[-5:] != '.pcap':										# compairing and error generation
+		if EnteredPcapName[-5:] != '.pcap':					# compairing and error generation
 			self.ui.LabelResultMsg.setText("Wrong Input please Enter correct")
 			self.ui.textBrowser.setText("Please Enter Valid Input")
 			return 0
